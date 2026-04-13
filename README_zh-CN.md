@@ -80,4 +80,3 @@ chmod +x ~/.claude/cc-stat-bar.js
 "command": "~/.claude/cc-stat-bar.js model context usage branch"
 ```
 > **效果：** `Opus 4.6 ｜ 16%/200k | 5h:83% ↻3h w:52% ↻3d | main`
-```
