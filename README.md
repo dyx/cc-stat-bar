@@ -1,16 +1,23 @@
 # Claude Code Stat Bar
 
-[**中文**](./README_zh-CN.md) | English
+<div align="center">
+
+English ｜ [**中文**](./README_zh-CN.md)
 
 A minimalist status bar for the Claude Code CLI.
 
 ![](./media/demo.png)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
+
+</div>
+
 **Status bar fields:**
 ```bash
 current context usage/context limit | token usage in the last 5 hours 5h reset countdown weekly token usage weekly reset countdown | current model name | current Git branch
 ```
-> PS: Usage information is shown only for users logged into Claude.
+> PS: Usage information is displayed only to Claude subscribers.
 
 ## Requirements
 
@@ -52,10 +59,18 @@ Add the following to your Claude Code config file. **Note: replace the `command`
 {
   "statusLine": {
     "type": "command",
-    "command": "C:\\Users\\YourUsername\\.claude\\cc-stat-bar.js"
+    "command": "~/.claude/cc-stat-bar.js"
   }
 }
 ```
+
+## Uninstall
+1. Run the following command in Claude Code:
+```bash
+/statusline delete
+```
+
+2. Delete the `cc-stat-bar.js` file from the Claude Code configuration directory `.claude`.
 
 ## Advanced Configuration (Customize Displayed Modules and Order)
 

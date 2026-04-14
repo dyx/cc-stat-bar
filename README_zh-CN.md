@@ -1,16 +1,23 @@
 # Claude Code Stat Bar
 
-中文 | [**English**](./README.md)
+<div align="center">
+
+ [**English**](./README.md) ｜ 中文
 
 一个极简 Claude Code 命令行状态条。
 
 ![](./media/demo.png)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
+
+</div>
+
 **状态条信息说明：**
 ```bash
 当前占用上下文比例/上下文上限 | 5小时内Token用量 5h重置倒计时 一周Token用量 一周重置倒计时 ｜ 当前模型名称 ｜ 当前Git分支
 ```
-> PS：用量信息只有 Claude 登录用户才展示
+> PS：用量信息只有 Claude 订阅用户才展示
 
 ## 运行要求
 
@@ -52,10 +59,18 @@ chmod +x ~/.claude/cc-stat-bar.js
 {
   "statusLine": {
     "type": "command",
-    "command": "C:\\Users\\您的用户名\\.claude\\cc-stat-bar.js"
+    "command": "~/.claude/cc-stat-bar.js"
   }
 }
 ```
+
+## 卸载
+1. 在 Claude Code 中执行命令：
+```bash
+/statusline delete
+```
+
+2. 删除 Claude Code 配置目录 `.claude` 中的 `cc-stat-bar.js` 文件
 
 ## 高级配置（自定义显示内容与顺序）
 
