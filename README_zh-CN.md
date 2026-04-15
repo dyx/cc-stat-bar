@@ -33,7 +33,7 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "npx cc-stat-bar"
+    "command": "npx cc-stat-bar@latest"
   }
 }
 ```

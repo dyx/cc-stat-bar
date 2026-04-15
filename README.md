@@ -34,7 +34,7 @@ Just configure Claude Code's `settings.json`. No file download is required:
 {
   "statusLine": {
     "type": "command",
-    "command": "npx cc-stat-bar"
+    "command": "npx cc-stat-bar@latest"
   }
 }
 ```
