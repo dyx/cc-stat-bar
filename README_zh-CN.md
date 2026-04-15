@@ -6,16 +6,18 @@
 
 一个极简 Claude Code 命令行状态条。
 
-![](./media/demo.png)
+![](./media/demo-dark.png)
+![](./media/demo-light.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
+[![npm](https://img.shields.io/npm/v/cc-stat-bar)](https://www.npmjs.com/package/cc-stat-bar)
 
 </div>
 
 **状态条信息说明：**
-```bash
-当前占用上下文比例/上下文上限 | 5小时内Token用量 5h重置倒计时 一周Token用量 一周重置倒计时 ｜ 当前模型名称 ｜ 当前Git分支
+```
+上下文使用比例 ↑输入token ↓输出token | 5h用量 重置倒计时 周用量 重置倒计时 | 费用 时长 | 模型名(上下文窗口) | 项目 > 分支
 ```
 > PS：用量信息只有 Claude 订阅用户才展示
 
@@ -25,7 +27,24 @@
 - Git
 
 ## 安装与配置
-### macOS / Linux
+
+### 方式一：npx（推荐）
+
+只需配置 Claude Code 的 `settings.json`，无需下载任何文件：
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "npx --yes cc-stat-bar"
+  }
+}
+```
+
+> 💡 如果对启动速度敏感，可先全局安装：`npm install -g cc-stat-bar`，然后 `command` 改为 `cc-stat-bar`。
+
+### 方式二：手动安装
+
+#### macOS / Linux
 1. **拷贝脚本**
 
 将本项目中的 `cc-stat-bar.js` 复制到 Claude 配置目录：`~/.claude/`
@@ -47,7 +66,7 @@ chmod +x ~/.claude/cc-stat-bar.js
 }
 ```
 
-### Windows
+#### Windows
 1. **拷贝脚本**
 
 将本项目中的 `cc-stat-bar.js` 复制到 Claude 配置目录：`C:\Users\您的用户名\.claude\`
@@ -70,28 +89,41 @@ chmod +x ~/.claude/cc-stat-bar.js
 /statusline delete
 ```
 
-2. 删除 Claude Code 配置目录 `.claude` 中的 `cc-stat-bar.js` 文件
+2. 如果是手动安装，删除 Claude Code 配置目录 `.claude` 中的 `cc-stat-bar.js` 文件。
 
-## 高级配置（自定义显示内容与顺序）
+## 高级配置
+
+### 自定义显示模块与顺序
 
 默认展示所有信息。你可以通过在 `command` 路径后追加参数，来定义要展示的模块及其顺序。
 
-**可用参数：**
-- `context`：上下文信息
-- `usage`：Token 用量信息
-- `model`：模型信息
-- `branch`：Git 分支信息
+**可用模块：**
+- `context`：上下文使用比例与 token 计数
+- `rateLimits`：5 小时 / 7 天 Token 用量与重置倒计时
+- `cost`：累计费用与会话时长
+- `model`：当前模型名称与上下文窗口大小
+- `workspace`：项目目录与 Git 分支
+
+### 主题切换
+
+支持 `dark`（默认）和 `light` 两种主题：
+```json
+"command": "~/.claude/cc-stat-bar.js --theme light"
+```
 
 ### 配置示例
 
 **示例 1：仅展示上下文与用量**
 ```json
-"command": "~/.claude/cc-stat-bar.js context usage"
+"command": "~/.claude/cc-stat-bar.js context rateLimits"
 ```
-> **效果：** `16%/200k | 5h:83% ↻3h w:52% ↻3d`
 
-**示例 2：调整展示顺序**
+**示例 2：仅展示模型与项目信息**
 ```json
-"command": "~/.claude/cc-stat-bar.js model context usage branch"
+"command": "~/.claude/cc-stat-bar.js model workspace"
 ```
-> **效果：** `Opus 4.6 ｜ 16%/200k | 5h:83% ↻3h w:52% ↻3d | main`
+
+**示例 3：自定义顺序 + 浅色主题**
+```json
+"command": "~/.claude/cc-stat-bar.js --theme light model context cost"
+```

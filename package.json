@@ -1,0 +1,38 @@
+{
+  "name": "cc-stat-bar",
+  "version": "1.0.0",
+  "description": "A minimalist status bar for the Claude Code CLI",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "statusline",
+    "status-bar",
+    "terminal",
+    "cli"
+  ],
+  "author": "dyx",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dyx/cc-stat-bar.git"
+  },
+  "homepage": "https://github.com/dyx/cc-stat-bar#readme",
+  "bugs": {
+    "url": "https://github.com/dyx/cc-stat-bar/issues"
+  },
+  "bin": {
+    "cc-stat-bar": "./cc-stat-bar.js"
+  },
+  "files": [
+    "cc-stat-bar.js",
+    "LICENSE",
+    "README.md",
+    "README_zh-CN.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "node test-cc-stat-bar.js"
+  }
+}
