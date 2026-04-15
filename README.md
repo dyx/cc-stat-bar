@@ -28,8 +28,6 @@ Context usage ↑input tokens ↓output tokens | 5h usage reset countdown weekly
 
 ## Installation and Configuration
 
-### Option 1: `npx` (Recommended)
-
 Just configure Claude Code's `settings.json`. No file download is required:
 
 ```json

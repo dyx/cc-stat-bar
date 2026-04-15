@@ -28,8 +28,6 @@
 
 ## 安装与配置
 
-### 方式一：npx（推荐）
-
 只需配置 Claude Code 的 `settings.json`，无需下载任何文件：
 ```json
 {
