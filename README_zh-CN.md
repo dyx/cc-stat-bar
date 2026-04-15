@@ -6,8 +6,8 @@
 
 一个极简 Claude Code 命令行状态条。
 
-![](./media/demo-dark.png)
-![](./media/demo-light.png)
+![](https://raw.githubusercontent.com/dyx/cc-stat-bar/main/media/demo-dark.png)
+![](https://raw.githubusercontent.com/dyx/cc-stat-bar/main/media/demo-light.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
@@ -35,53 +35,12 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "npx --yes cc-stat-bar"
+    "command": "npx cc-stat-bar"
   }
 }
 ```
 
 > 💡 如果对启动速度敏感，可先全局安装：`npm install -g cc-stat-bar`，然后 `command` 改为 `cc-stat-bar`。
-
-### 方式二：手动安装
-
-#### macOS / Linux
-1. **拷贝脚本**
-
-将本项目中的 `cc-stat-bar.js` 复制到 Claude 配置目录：`~/.claude/`
-
-2. **权限设置**
-```bash
-chmod +x ~/.claude/cc-stat-bar.js
-```
-
-3. **配置你的 Claude Code `settings.json`**
-
-在 Claude Code 的配置文件中加入以下内容。**注意：请将 `command` 路径替换为您电脑上的实际脚本路径。**
-```json
-{
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/cc-stat-bar.js"
-  }
-}
-```
-
-#### Windows
-1. **拷贝脚本**
-
-将本项目中的 `cc-stat-bar.js` 复制到 Claude 配置目录：`C:\Users\您的用户名\.claude\`
-
-2. **配置你的 Claude Code `settings.json`**
-
-在 Claude Code 的配置文件中加入以下内容。**注意：请将 `command` 路径替换为您电脑上的实际脚本路径。**
-```json
-{
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/cc-stat-bar.js"
-  }
-}
-```
 
 ## 卸载
 1. 在 Claude Code 中执行命令：
@@ -89,7 +48,7 @@ chmod +x ~/.claude/cc-stat-bar.js
 /statusline delete
 ```
 
-2. 如果是手动安装，删除 Claude Code 配置目录 `.claude` 中的 `cc-stat-bar.js` 文件。
+2. 如果全局安装了 `cc-stat-bar`，可执行命令卸载 `npm uninstall -g cc-stat-bar`。
 
 ## 高级配置
 
@@ -108,22 +67,17 @@ chmod +x ~/.claude/cc-stat-bar.js
 
 支持 `dark`（默认）和 `light` 两种主题：
 ```json
-"command": "~/.claude/cc-stat-bar.js --theme light"
+"command": "npx cc-stat-bar --theme light"
 ```
 
 ### 配置示例
 
 **示例 1：仅展示上下文与用量**
 ```json
-"command": "~/.claude/cc-stat-bar.js context rateLimits"
+"command": "npx cc-stat-bar context rateLimits"
 ```
 
-**示例 2：仅展示模型与项目信息**
+**示例 2：自定义顺序 + 浅色主题**
 ```json
-"command": "~/.claude/cc-stat-bar.js model workspace"
-```
-
-**示例 3：自定义顺序 + 浅色主题**
-```json
-"command": "~/.claude/cc-stat-bar.js --theme light model context cost"
+"command": "npx cc-stat-bar --theme light model context cost"
 ```

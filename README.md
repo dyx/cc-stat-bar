@@ -6,8 +6,8 @@
 
 A minimalist status bar for the Claude Code CLI.
 
-![](./media/demo-dark.png)
-![](./media/demo-light.png)
+![](https://raw.githubusercontent.com/dyx/cc-stat-bar/main/media/demo-dark.png)
+![](https://raw.githubusercontent.com/dyx/cc-stat-bar/main/media/demo-light.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
@@ -36,58 +36,12 @@ Just configure Claude Code's `settings.json`. No file download is required:
 {
   "statusLine": {
     "type": "command",
-    "command": "npx --yes cc-stat-bar"
+    "command": "npx cc-stat-bar"
   }
 }
 ```
 
 > If startup speed matters, install it globally first with `npm install -g cc-stat-bar`, then change `command` to `cc-stat-bar`.
-
-### Option 2: Manual Installation
-
-#### macOS / Linux
-
-1. **Copy the script**
-
-Copy `cc-stat-bar.js` from this project into the Claude config directory: `~/.claude/`
-
-2. **Set permissions**
-
-```bash
-chmod +x ~/.claude/cc-stat-bar.js
-```
-
-3. **Configure your Claude Code `settings.json`**
-
-Add the following to your Claude Code config file. Replace the `command` path with the actual script path on your machine.
-
-```json
-{
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/cc-stat-bar.js"
-  }
-}
-```
-
-#### Windows
-
-1. **Copy the script**
-
-Copy `cc-stat-bar.js` from this project into the Claude config directory: `C:\Users\<YourUsername>\.claude\`
-
-2. **Configure your Claude Code `settings.json`**
-
-Add the following to your Claude Code config file. Replace the `command` path with the actual script path on your machine.
-
-```json
-{
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/cc-stat-bar.js"
-  }
-}
-```
 
 ## Uninstall
 
@@ -97,7 +51,7 @@ Add the following to your Claude Code config file. Replace the `command` path wi
 /statusline delete
 ```
 
-2. If you installed it manually, delete `cc-stat-bar.js` from your `.claude` directory.
+2. If you installed `cc-stat-bar` globally, you can uninstall it with `npm uninstall -g cc-stat-bar`.
 
 ## Advanced Configuration
 
@@ -118,7 +72,7 @@ By default, all information is shown. You can append arguments after the `comman
 Supports both `dark` (default) and `light` themes:
 
 ```json
-"command": "~/.claude/cc-stat-bar.js --theme light"
+"command": "npx cc-stat-bar --theme light"
 ```
 
 ### Configuration Examples
@@ -126,17 +80,11 @@ Supports both `dark` (default) and `light` themes:
 **Example 1: Show only context and usage**
 
 ```json
-"command": "~/.claude/cc-stat-bar.js context rateLimits"
+"command": "npx cc-stat-bar context rateLimits"
 ```
 
-**Example 2: Show only model and project info**
+**Example 2: Custom order + light theme**
 
 ```json
-"command": "~/.claude/cc-stat-bar.js model workspace"
-```
-
-**Example 3: Custom order + light theme**
-
-```json
-"command": "~/.claude/cc-stat-bar.js --theme light model context cost"
+"command": "npx cc-stat-bar --theme light model context cost"
 ```
